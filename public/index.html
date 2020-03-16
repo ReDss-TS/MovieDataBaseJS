@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Movie DataBase</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
+  </head>
+  <body>
+    <div class="container">
+      <div id="header"></div>
+
+      <div class="btn-group btn-group-lg">
+        <a class="btn btn-default" data-role="nav-tranding" href="#tranding">Tranding</a>
+        <a class="btn btn-default" data-role="nav-films" href="#films">Top Rated</a>
+      </div>
+      <hr></hr>
+      <div class="searchForm">
+        <input type="text" id="searchInput" name="searchInput" placeholder="Movie Name"/>
+        <a class="btn btn-default" data-role="nav-search" href="#search">Search</a>
+      </div>
+      <hr>
+      <div id="results"></div>
+      <div id="recomendations"></div>
+    </div>
+
+    <script scr="entry.js" type="module"> </script>
+    <script id="headerTemplate" type="text/template">
+      <h1>Movie DataBase for {{name}}</h1>
+    </script>
+
+    <script id="filmsTemplate" type="text/template">
+      <div>
+        <div class="flex-container">
+          {{#each films}}
+          <div class="film text-center">
+            <a href="#films/{{id}}">{{ title }}</a>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </script>
+
+    <script id="filmTemplate" type="text/template">
+      <div>
+        <div><b>{{ title }}</b></div>
+        <a href="https://vk.com/id{{ id }}" target="_blank">
+          <img src="https://image.tmdb.org/t/p/w500/{{ poster_path }}" class="img">
+        </a>
+        <div>{{ overview }}</div>
+      </div>
+    </script>
+
+    <script id="recomendationsTemplate" type="text/template">
+      <div>
+        <h3>Also see recomandations:</h3>
+        <div class="flex-container">
+          {{#each films}}
+          <div class="film text-center">
+            <a href="#films/{{id}}">{{ title }}</a>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </script>
+  </body>
+</html>
+
